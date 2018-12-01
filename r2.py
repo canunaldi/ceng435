@@ -9,7 +9,7 @@ from const import *
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind(BROKER_TO_R2.get_listener())
 sock2 = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-sock2.bind(R2_TO_DEST.get_sender())
+sock2.bind(DEST_TO_R1.get_sender())
 print("ASFFSADFSAD")
 while True:
     data,addr = sock.recvfrom(18)
