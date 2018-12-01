@@ -7,12 +7,14 @@ from const import *
 
 
 def receive_r1():
-    data,addr = sock.recvfrom(18)
-    print(data)
+    while True:
+        data,addr = sock.recvfrom(18)
+        print(data)
 
 def receive_r2():
-    data,addr = sock2.recvfrom(18)
-    print(data)
+    while True:
+        data,addr = sock2.recvfrom(18)
+        print(data)
     
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
