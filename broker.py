@@ -20,13 +20,9 @@ while 1:
     print "received data:", data
     if random == 0:
         sock2.sendto(data, BROKER_TO_R1.get_listener())
-        data,addr = sock2.recvfrom(21)
-        print "R1 Response", data
         random = 1
     elif random == 1:
         sock3.sendto(data, BROKER_TO_R2.get_listener())
-        data,addr = sock3.recvfrom(21)
-        print "R1 Response", data
         random = 0
 
 
