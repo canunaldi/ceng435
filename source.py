@@ -18,9 +18,7 @@ def generate_random_message():
 
 
 sock = socket(AF_INET, SOCK_STREAM)
-print(SOURCE_TO_BROKER.get_location())
 sock.connect(SOURCE_TO_BROKER.get_listener())
-print("fasasd")
 while True:
     message = generate_random_message()
     print(message)
