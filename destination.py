@@ -12,7 +12,7 @@ def receive_r1():
         currenttime = time.time()
         currenttime = currenttime * 1000
         currenttime = int (currenttime)
-        starttime = data[4:]
+        starttime = data[5:]
         print("START:", starttime)
         print("END:", currenttime)
         starttime = str (starttime)
