@@ -9,12 +9,22 @@ from const import *
 def receive_r1():
     while True:
         data,addr = sock.recvfrom(18)
-        print(data)
+        currenttime = time.time()
+        currenttime = currenttime * 1000
+        starttime = data[:13]
+        starttime = int (starttime)
+        end-to-end = currenttime - starttime
+        print (end-to-end)
 
 def receive_r2():
     while True:
         data,addr = sock2.recvfrom(18)
-        print(data)
+        currenttime = time.time()
+        currenttime = currenttime * 1000
+        starttime = data[:13]
+        starttime = int (starttime)
+        end-to-end = currenttime - starttime
+        print (end-to-end)
     
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
