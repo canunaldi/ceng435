@@ -3,7 +3,7 @@ import string
 from socket import socket, AF_INET, SOCK_STREAM
 import time
 import threading
-from const import BROKER
+from const import *
 
 
 id = 999
@@ -18,8 +18,8 @@ def generate_random_message():
 
 
 sock = socket(AF_INET, SOCK_STREAM)
-print(BROKER.get_listener())
-sock.connect(BROKER.get_listener())
+print(SOURCE_TO_BROKER.get_location())
+sock.connect(SOURCE_TO_BROKER.get_listener())
 print("fasasd")
 while True:
     message = generate_random_message()
