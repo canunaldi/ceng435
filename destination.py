@@ -11,7 +11,11 @@ def receive_r1():
         data,addr = sock.recvfrom(18)
         currenttime = time.time()
         currenttime = currenttime * 1000
+        currenttime = int (currenttime)
         starttime = data[:13]
+        print("START:", starttime)
+        print("END:", currenttime)
+        starttime = str (starttime)
         starttime = int (starttime)
         end-to-end = currenttime - starttime
         print (end-to-end)
@@ -21,7 +25,11 @@ def receive_r2():
         data,addr = sock2.recvfrom(18)
         currenttime = time.time()
         currenttime = currenttime * 1000
+        currenttime = int (currenttime)
         starttime = data[:13]
+        print("START:", starttime)
+        print("END:", currenttime)
+        starttime = str (starttime)
         starttime = int (starttime)
         end-to-end = currenttime - starttime
         print (end-to-end)
