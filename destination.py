@@ -17,8 +17,8 @@ def receive_r1():
         print("END:", currenttime)
         starttime = str (starttime)
         starttime = int (starttime)
-        end-to-end = currenttime - starttime
-        print (end-to-end)
+        end_to_end = currenttime - starttime
+        print (end_to_end)
 
 def receive_r2():
     while True:
@@ -31,8 +31,8 @@ def receive_r2():
         print("END:", currenttime)
         starttime = str (starttime)
         starttime = int (starttime)
-        end-to-end = currenttime - starttime
-        print (end-to-end)
+        end_to_end = currenttime - starttime
+        print (end_to_end)
     
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
