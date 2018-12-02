@@ -22,10 +22,8 @@ def receive_r1():
         end_to_end = currenttime - starttime
         result_datas.append(end_to_end)
 
-        print (end_to_end)
         ack = "OK!"
         sock.sendto(ack, DEST_TO_R1.get_sender())
-        print("ACK SENT!")
         if data[:4] == '2999':
             with open('result.csv', 'wb') as csvfile:
                 patcher = csv.writer(csvfile, dialect='excel')
