@@ -4,11 +4,15 @@ import socket
 import time
 import threading
 from const import *
+import csv
 
+
+result_datas = []
 
 def receive_r1():
     while True:
         data,addr = sock.recvfrom(18)
+        result_datas.append(data)
         currenttime = time.time()
         currenttime = currenttime * 1000
         currenttime = int (currenttime)
@@ -21,10 +25,20 @@ def receive_r1():
         ack = "OK!"
         sock.sendto(ack, DEST_TO_R1.get_sender())
         print("ACK SENT!")
+        if data[:4] == 2999:
+            with open('names.csv', 'w') as csvfile:
+                fieldnames = ['id', 'time']
+                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+                writer.writeheader()
+                for var in result_datas:
+                    writer.writerow({'id': var[:4], 'time': var[5:]})
+
 
 def receive_r2():
     while True:
         data,addr = sock2.recvfrom(18)
+        result_datas.append(data)
         currenttime = time.time()
         currenttime = currenttime * 1000
         currenttime = int (currenttime)
@@ -36,7 +50,14 @@ def receive_r2():
         print (end_to_end)
         ack = "OK!"
         sock2.sendto(ack, DEST_TO_R2.get_sender())
-    
+        if data[:4] == 2999:
+            with open('names.csv', 'w') as csvfile:
+                fieldnames = ['id', 'time']
+                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+                writer.writeheader()
+                for var in result_datas:
+                    writer.writerow({'id': var[:4], 'time': var[5:]})
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind(R1_TO_DEST.get_listener())
