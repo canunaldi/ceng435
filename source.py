@@ -23,5 +23,5 @@ while id<3999:
     print(message) # Test issues
     sock.send(message.encode())  # Sending the message to the Broker
     ack = sock.recv(3) # Wait acknowledge from the broker
-    #time.sleep(0.1) # ????????
+    time.sleep(0.2) # ????????
     print(ack) # Test issues
