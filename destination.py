@@ -50,6 +50,8 @@ def receive_r2():
             print("GIRDIM")
             with open('result.csv', 'wb') as csvfile:
                 patcher = csv.writer(csvfile, dialect='excel')
+                for val in result_datas:
+                    print(val)
                 patcher.writerow(result_datas)
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
