@@ -28,6 +28,8 @@ def receive_r1():
             print("GIRDIM")
             with open('result.csv', 'wb') as csvfile:
                 patcher = csv.writer(csvfile, dialect='excel')
+                for val in result_datas:
+                    print(val)
                 patcher.writerow(result_datas)             
 
 def receive_r2():
