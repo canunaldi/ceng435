@@ -31,6 +31,8 @@ def receive_r1():
                 patcher = csv.writer(csvfile, dialect='excel')
                 patcher.writerow(result_datas)             
 
+
+# Same work done for R1 at receive_r1 but this time for the data coming from the R2
 def receive_r2():
     while True:
         data,addr = sock2.recvfrom(18)

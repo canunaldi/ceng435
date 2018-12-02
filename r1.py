@@ -17,4 +17,4 @@ while True:
     sock2.sendto(data,R1_TO_DEST.get_listener()) # Send the incoming data to the Destionation
     ack,addr = sock2.recvfrom(3) # Wait for the acknowledge coming from the destination
     print(ack) # Test issues
-    sock.sendto(ack,R1_TO_BROKER.get_sender()) 
+    sock.sendto(ack,R1_TO_BROKER.get_sender()) # Send the acknowledge back to the Broker
