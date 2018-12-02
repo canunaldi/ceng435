@@ -25,15 +25,10 @@ def receive_r1():
         ack = "OK!"
         sock.sendto(ack, DEST_TO_R1.get_sender())
         print("ACK SENT!")
-        if data[:4] == 2999:
-            with open('names.csv', 'w') as csvfile:
-                fieldnames = ['id', 'time']
-                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-
-                writer.writeheader()
-                for var in result_datas:
-                    writer.writerow({'id': var[:4], 'time': var[5:]})
-
+        if data[:4] == '2999':
+            with open('result.csv', 'wb') as csvfile:
+                patcher = csv.writer(csvfile, dialect='excel')
+                patcher.writerow(result_datas)             
 
 def receive_r2():
     while True:
@@ -50,14 +45,10 @@ def receive_r2():
         print (end_to_end)
         ack = "OK!"
         sock2.sendto(ack, DEST_TO_R2.get_sender())
-        if data[:4] == 2999:
-            with open('names.csv', 'w') as csvfile:
-                fieldnames = ['id', 'time']
-                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-
-                writer.writeheader()
-                for var in result_datas:
-                    writer.writerow({'id': var[:4], 'time': var[5:]})
+        if data[:4] == '2999':
+            with open('result.csv', 'wb') as csvfile:
+                patcher = csv.writer(csvfile, dialect='excel')
+                patcher.writerow(result_datas)
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind(R1_TO_DEST.get_listener())
