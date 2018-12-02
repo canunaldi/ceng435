@@ -19,7 +19,7 @@ def generate_random_message():
 
 sock = socket(AF_INET, SOCK_STREAM)
 sock.connect(SOURCE_TO_BROKER.get_listener())
-while id<40:
+while id<1040:
     message = generate_random_message()
     print(message)
     sock.send(message.encode())  # TODO: Maybe send parts instead of whole message?
