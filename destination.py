@@ -28,7 +28,7 @@ def receive_r2():
         currenttime = time.time()
         currenttime = currenttime * 1000
         currenttime = int (currenttime)
-        starttime = data[:13]
+        starttime = data[5:]
         print(data[:4])
         starttime = str (starttime)
         starttime = int (starttime)
