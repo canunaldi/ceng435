@@ -28,12 +28,12 @@ while 1: # inf loop
         conn.send(ack) #Send the acknowledge to the Source
         print(ack) # Test issues
 
-    elif random == 1:
-        sock3.sendto(data, BROKER_TO_R2.get_listener())
-        random = 0
-        ack,addr = sock3.recvfrom(3)
-        conn.send(ack)
-        print(ack)
+    elif random == 1: # Now send packet to the R2
+        sock3.sendto(data, BROKER_TO_R2.get_listener()) #  Using socket3 in order to send the data to the R2
+        random = 0  # Change the random variable to send the next packet to R1
+        ack,addr = sock3.recvfrom(3) # Get the acknowledge from the R2
+        conn.send(ack) # Send the acknowledge to the Source
+        print(ack) # Test issues
 
 
     
