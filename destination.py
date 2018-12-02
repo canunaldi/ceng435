@@ -19,7 +19,7 @@ def receive_r1():
         end_to_end = currenttime - starttime
         print (end_to_end)
         ack = "OK!"
-        sock.sendto(ack, DEST_TO_R1)
+        sock.sendto(ack, DEST_TO_R1.get_listener())
 
 def receive_r2():
     while True:
@@ -34,7 +34,7 @@ def receive_r2():
         end_to_end = currenttime - starttime
         print (end_to_end)
         ack = "OK!"
-        sock.sendto(ack, DEST_TO_R1)
+        sock.sendto(ack, DEST_TO_R1).get_listener()
     
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
