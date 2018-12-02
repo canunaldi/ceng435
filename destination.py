@@ -11,7 +11,7 @@ result_datas = [] # The resulting end_to_end delays stored in this array
 
 def receive_r1(): # The data receiver that gets the data from R1
     while True: 
-        data,addr = sock.recvfrom(18) # The data coming from R1 received and stored into the data variable
+        data,addr = R1Socket.recvfrom(18) # The data coming from R1 received and stored into the data variable
         print(data) # Test Issues
         currenttime = time.time() # Time at the destination point
         currenttime = currenttime * 1000 # Similar at the source; this calculation made for preserving the floating points (ms's)
@@ -24,7 +24,7 @@ def receive_r1(): # The data receiver that gets the data from R1
         result_datas.append(end_to_end) # Store the delay into the our storage array
 
         ack = "OK!" # Acknowledge message
-        sock.sendto(ack, DEST_TO_R1.get_sender()) # Send acknowledge to R1 (since the data came from R1, R1 waiting for the acknowledge)
+        R1Socket.sendto(ack, DEST_TO_R1.get_sender()) # Send acknowledge to R1 (since the data came from R1, R1 waiting for the acknowledge)
         if data[:4] == '3999': # The Last data check (We will print the delays the '3999' point changed manually)
             print("GIRDIM") # Test issues
             with open('result.csv', 'wb') as csvfile: # Open a csv file 
@@ -35,7 +35,7 @@ def receive_r1(): # The data receiver that gets the data from R1
 # Same work done for R1 at receive_r1 but this time for the data coming from the R2
 def receive_r2():
     while True:
-        data,addr = sock2.recvfrom(18)
+        data,addr = R2Socket.recvfrom(18)
         print(data)
         currenttime = time.time()
         currenttime = currenttime * 1000
@@ -48,16 +48,16 @@ def receive_r2():
         end_to_end = currenttime - starttime
         result_datas.append(end_to_end)
         ack = "OK!"
-        sock2.sendto(ack, DEST_TO_R2.get_sender())
+        R2Socket.sendto(ack, DEST_TO_R2.get_sender())
         if data[:4] == '3999':
             with open('result.csv', 'wb') as csvfile:
                 patcher = csv.writer(csvfile, dialect='excel')
                 patcher.writerow(result_datas)
 
-sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # new socket to get the data from R1 and send the acknowledge to R1
-sock.bind(R1_TO_DEST.get_listener()) # socket listens R1
-sock2 = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # new socket to get the data from R2 and sends the acknowledge message to the R2
-sock2.bind(R2_TO_DEST.get_listener()) # socket listens R2
+R1Socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # new socket to get the data from R1 and send the acknowledge to R1
+R1Socket.bind(R1_TO_DEST.get_listener()) # socket listens R1
+R2Socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # new socket to get the data from R2 and sends the acknowledge message to the R2
+R2Socket.bind(R2_TO_DEST.get_listener()) # socket listens R2
 
 
 # Threads 

@@ -1,4 +1,6 @@
 # ceng435 Term Project Part 1
+# Ozan Incesulu, 2099711
+# Can Duran Unaldi, 2036523
 
 This project constists of 6 python scripts:
 * broker.py
@@ -47,6 +49,10 @@ This file connects to the "destination" node in our slice. By using threading, g
 
 
 # EXPERIMENTS
+
+We take tc qdisc change dev eth0 root netem delay 20ms 5ms distribution normal code as a base for our experiments.
+
+The eth0 changes in each link. We found which eth can be used by using ifconfig.
 
 # Experiment 1
 
