@@ -24,3 +24,5 @@ while True:
     print(message)
     sock.send(message.encode())  # TODO: Maybe send parts instead of whole message?
     time.sleep(0.2)
+    ack = sock.recv(3)
+    print(ack)
