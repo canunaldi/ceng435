@@ -18,6 +18,8 @@ sock3 = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock3.bind(R2_TO_BROKER.get_sender())
 while 1:
     data = conn.recv(18).decode()
+    if not data:
+        break
     print "received data:", data
     if random == 0:
         sock2.sendto(data, BROKER_TO_R1.get_listener())
