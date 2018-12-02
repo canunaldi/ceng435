@@ -17,7 +17,7 @@ def receive_r1():
         currenttime = int (currenttime)
         starttime = data[5:]
         print(data[:4])
-        starttime = str (starttime)
+        print(starttime)
         starttime = int (starttime)
         end_to_end = currenttime - starttime
         result_datas.append(end_to_end)
