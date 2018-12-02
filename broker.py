@@ -5,6 +5,8 @@ import time
 import threading
 from const import *
 
+print("2")
+
 random = 0
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.bind(SOURCE_TO_BROKER.get_listener())
@@ -14,7 +16,6 @@ sock2 = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock2.bind(R1_TO_BROKER.get_sender())
 sock3 = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock3.bind(R2_TO_BROKER.get_sender())
-print("2")
 while 1:
     data = conn.recv(18).decode()
     print "received data:", data
