@@ -13,8 +13,7 @@ def receive_r1():
         currenttime = currenttime * 1000
         currenttime = int (currenttime)
         starttime = data[5:]
-        print("START:", starttime)
-        print("END:", currenttime)
+        print(data[:4])
         starttime = str (starttime)
         starttime = int (starttime)
         end_to_end = currenttime - starttime
@@ -29,8 +28,7 @@ def receive_r2():
         currenttime = currenttime * 1000
         currenttime = int (currenttime)
         starttime = data[:13]
-        print("START:", starttime)
-        print("END:", currenttime)
+        print(data[:4])
         starttime = str (starttime)
         starttime = int (starttime)
         end_to_end = currenttime - starttime
