@@ -7,20 +7,20 @@ from const import *
 
 print("2")
 
-random = 0
-sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-sock.bind(SOURCE_TO_BROKER.get_listener())
-sock.listen(5)
-conn, addr = sock.accept()
-sock2 = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-sock2.bind(R1_TO_BROKER.get_sender())
-sock3 = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-sock3.bind(R2_TO_BROKER.get_sender())
-while 1:
-    data = conn.recv(18).decode()
-    if not data:
+random = 0  # To decide where to send the next packet R1 or R2
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # new socket
+sock.bind(SOURCE_TO_BROKER.get_listener()) # Socket listens from the Source
+sock.listen(2) # This socket can listen 2 connection. 
+conn, addr = sock.accept() # we get the connection from the source 
+sock2 = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # new socket in order to get the acknowledge from the R1
+sock2.bind(R1_TO_BROKER.get_sender()) # binds to R1 in order to acquire acknowledge
+sock3 = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # new socket in order to get the acknowledge from the R2
+sock3.bind(R2_TO_BROKER.get_sender()) # binds to R2 in order to acquire acknowledge
+while 1: # inf loop
+    data = conn.recv(18).decode() # gets data coming from the source
+    if not data: # This if statement checks if the source stoped sending message ie. the message is empty
         break
-    print "received data:", data
+    print "received data:", data # Test issues
     if random == 0:
         sock2.sendto(data, BROKER_TO_R1.get_listener())
         random = 1
