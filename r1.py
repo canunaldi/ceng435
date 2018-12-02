@@ -5,6 +5,7 @@ import time
 import threading
 from const import *
 
+
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind(BROKER_TO_R1.get_listener())
 sock2 = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)

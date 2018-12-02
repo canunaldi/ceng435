@@ -35,7 +35,7 @@ def receive_r2():
         end_to_end = currenttime - starttime
         print (end_to_end)
         ack = "OK!"
-        sock.sendto(ack, DEST_TO_R2.get_sender())
+        sock2.sendto(ack, DEST_TO_R2.get_sender())
     
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
