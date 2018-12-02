@@ -36,7 +36,7 @@ def receive_r1():
 def receive_r2():
     while True:
         data,addr = sock2.recvfrom(18)
-        
+        print(data)
         currenttime = time.time()
         currenttime = currenttime * 1000
         currenttime = int (currenttime)
