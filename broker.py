@@ -24,13 +24,14 @@ while 1:
         random = 1
         ack,addr = sock2.recvfrom(3)
         conn.send(ack)
+        print(ack)
 
     elif random == 1:
         sock3.sendto(data, BROKER_TO_R2.get_listener())
         random = 0
         ack,addr = sock3.recvfrom(3)
         conn.send(ack)
-
+        print(ack)
 
 
     
