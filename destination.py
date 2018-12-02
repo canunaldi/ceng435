@@ -24,7 +24,8 @@ def receive_r1():
 
         ack = "OK!"
         sock.sendto(ack, DEST_TO_R1.get_sender())
-        if data[:4] == '2999':
+        if data[:4] == 2999:
+            print("GIRDIM")
             with open('result.csv', 'wb') as csvfile:
                 patcher = csv.writer(csvfile, dialect='excel')
                 patcher.writerow(result_datas)             
@@ -45,7 +46,8 @@ def receive_r2():
         print (end_to_end)
         ack = "OK!"
         sock2.sendto(ack, DEST_TO_R2.get_sender())
-        if data[:4] == '2999':
+        if data[:4] == 2999:
+            print("GIRDIM")
             with open('result.csv', 'wb') as csvfile:
                 patcher = csv.writer(csvfile, dialect='excel')
                 patcher.writerow(result_datas)
